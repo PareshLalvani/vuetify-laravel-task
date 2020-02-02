@@ -8,13 +8,9 @@ import 'vuesax/dist/vuesax.css'; // Vuesax
 Vue.use(Vuesax)
 
 
-
 // VeeValidate
 import VeeValidate from 'vee-validate';
-//Vue.use(VeeValidate);
-Vue.use(VeeValidate, {
-  events: 'change|blur'
-});
+Vue.use(VeeValidate);
 
 // Theme Configurations
 import '../themeConfig.js'
@@ -30,6 +26,9 @@ import './assets/scss/main.scss'
 
 // Tailwind
 import '@/assets/css/main.css'
+
+// Responsive css style
+import '@/assets/css/responsive.css'
 
 
 // Vue Router
@@ -48,9 +47,16 @@ if(localStorage.getItem('user')) {
 
 // i18n
 import i18n from './i18n/i18n'
+
+// Vuejs - Vue wrapper for hammerjs
+import { VueHammer } from 'vue2-hammer'
+Vue.use(VueHammer)
+
+
 // PrismJS
 import 'prismjs'
 import 'prismjs/themes/prism-tomorrow.css'
+
 
 // Feather font icon
 require('./assets/css/iconfont.css')
@@ -60,6 +66,15 @@ import './axios'
 
 //Mixin
 import "./mixins/mixin";
+
+// Vue select
+import vSelect from 'vue-select'
+Vue.component('v-select', vSelect)
+
+// Vue select css
+// Note: In latest version you have to add it separately
+ import 'vue-select/dist/vue-select.css';
+
 
 Vue.config.productionTip = false
 

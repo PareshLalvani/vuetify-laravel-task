@@ -2,8 +2,8 @@
     File Name: _variables.scss
     Description: partial- SCSS varibales
     ----------------------------------------------------------------------------------------
+      
         
-         
       
 ==========================================================================================*/
 
@@ -22,7 +22,7 @@ $spacer-lg: ($spacer * 2);
         COLORS
 =========================================================*/
 
-$primary: #EA5455;
+$primary: #7367F0;
 $success: #28C76F;
 $danger: #EA5455;
 $warning: #FF9F43;
@@ -88,15 +88,16 @@ $reduced-sidebar-width: 80px;
         DARK THEME
 =========================================================*/
 
-$sidebar-dark-bg: #f56868;
-$content-dark-bg: #f58a8a9e;
-$dark-card-color: #f56868;
+//$sidebar-dark-bg: #10163a;
+$sidebar-dark-bg: #006994;
+$content-dark-bg: #262c49;
+$dark-card-color: #10163a;
 $table-dark-stripe: #212744;
-$table-light-stripe: #f56868;
+$table-light-stripe: #262c49;
 $grid-dark-color: #343661;
 
-$theme-light-dark-bg: #f56868;
-$theme-dark-bg: #f56868;
+$theme-light-dark-bg: #262c49;
+$theme-dark-bg: #10163a;
 $theme-dark-text-color: #c2c6dc;
 $theme-dark-heading-color: #ebeefd;
 // $theme-dark-heading-color: #C9CAD2;

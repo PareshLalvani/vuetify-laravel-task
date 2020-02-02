@@ -8,6 +8,7 @@ Vue.mixin({
       button_loading: false,
     };
   },
+
   created() {
     if (this.$store) {
       this.axios.defaults.headers.common["Authorization"] =

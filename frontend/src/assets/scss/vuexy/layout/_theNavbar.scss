@@ -2,8 +2,8 @@
   File Name: _theNavbar.scss
   Description: The navbar styles
   ----------------------------------------------------------------------------------------
+    
       
-       
     
 ==========================================================================================*/
 
@@ -303,7 +303,7 @@
 
 // CART & NOTIFICATIONS DROPDOWN
 .cart-dropdown {
-  width: 465px;
+  width: 365px;
 
   .cart-dropdown-item-img {
     max-width: 100%;
@@ -315,7 +315,7 @@
 
 .notification-dropdown,
 .cart-dropdown {
-  width: 465px;
+  width: 365px;
 
   // Full width notification in mobile devices
   @media screen and (max-width: 500px) {

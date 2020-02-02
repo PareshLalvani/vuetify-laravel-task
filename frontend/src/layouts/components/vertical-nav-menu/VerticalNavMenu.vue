@@ -1,14 +1,3 @@
-<!-- =========================================================================================
-  File Name: VerticalNavMenu.vue
-  Description: Vertical NavMenu Component
-  Component Name: VerticalNavMenu
-  ----------------------------------------------------------------------------------------
-      
-       
-    
-========================================================================================== -->
-
-
 <template>
   <div class="parentx">
 
@@ -30,8 +19,8 @@
         <div class="header-sidebar flex items-end justify-between" slot="header">
 
           <!-- Logo -->
-          <router-link tag="div" class="vx-logo cursor-pointer flex items-center" to="/dashboard">
-            <img :src="logo" alt="logo" class="w-12" v-if="logo">
+          <router-link tag="div" class="vx-logo cursor-pointer flex items-center" to="/">
+            <img :src="logo" alt="logo" class="w-10 mr-4" v-if="logo">
             <span class="vx-logo-text" v-show="isMouseEnter || !reduce" v-if="title">{{ title }}</span>
           </router-link>
           <!-- /Logo -->
@@ -208,10 +197,6 @@ export default {
     windowWidth()  { this.setVerticalNavMenuWidth() }
   },
   methods: {
-    // handleWindowResize(event) {
-    //   this.windowWidth = event.currentTarget.innerWidth;
-    //   this.setVerticalNavMenuWidth()
-    // },
     onSwipeLeft() {
       if (this.isVerticalNavMenuActive && this.showCloseButton) this.isVerticalNavMenuActive = false
     },
@@ -270,47 +255,6 @@ export default {
 
       // Remove Only Icon in Menu
       this.$store.commit('UPDATE_VERTICAL_NAV_MENU_ITEMS_MIN', false)
-
-
-
-      // if(this.layoutType === 'vertical' || (this.layoutType === 'horizontal' && this.windowWidth < 1200))
-      // if (this.windowWidth < 1200) {
-
-      //   // Close NavMenu
-      //   this.$store.commit('TOGGLE_IS_VERTICAL_NAV_MENU_ACTIVE', false)
-
-      //   // Reduce button
-      //   if (this.reduceButton) this.reduce = false
-
-      //   // Menu Action buttons
-      //   this.showCloseButton = true
-      //   this.clickNotClose   = false
-
-      //   // Update NavMenu Width
-      //   this.$store.dispatch('updateVerticalNavMenuWidth', 'no-nav-menu')
-
-      //   // Remove Only Icon in Menu
-      //   this.$store.commit('UPDATE_VERTICAL_NAV_MENU_ITEMS_MIN', false)
-
-      // } else {
-
-      //   // Set reduce
-      //   this.reduce = this.reduceButton ? true : false
-
-      //   // Open NavMenu
-      //   this.$store.commit('TOGGLE_IS_VERTICAL_NAV_MENU_ACTIVE', true)
-
-      //   // Set Menu Items Only Icon Mode
-      //   const verticalNavMenuItemsMin = (this.reduceButton && !this.isMouseEnter) ? true : false
-      //   this.$store.commit('UPDATE_VERTICAL_NAV_MENU_ITEMS_MIN', verticalNavMenuItemsMin)
-
-      //   // Menu Action buttons
-      //   this.clickNotClose   = true
-      //   this.showCloseButton = false
-
-      //   const verticalNavMenuWidth   = this.isVerticalNavMenuReduced ? "reduced" : "default"
-      //   this.$store.dispatch('updateVerticalNavMenuWidth', verticalNavMenuWidth)
-      // }
     },
     toggleReduce(val) {
       this.reduceButton = val

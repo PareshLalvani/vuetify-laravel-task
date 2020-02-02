@@ -2,8 +2,8 @@
     File Name: _misc.scss
     Description: partial- misc styles
     ----------------------------------------------------------------------------------------
+      
         
-         
       
 ==========================================================================================*/
 
@@ -24,14 +24,16 @@ ol {
 
 .layout--full-page {
   .bg-img {
-    background-image: url("../images/pages/vuexy-login-bg.jpg");
+    background-image: none;
     background-position: center;
+    background: linear-gradient(0deg,rgba(0,105,148,.8),rgba(0,105,148,.8784313725490196)),url(../images/pages/login.jpg);
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: 50%;
   }
 
   .full-page-bg-color {
-    background-color: #eff2f7;
+    background-color: #285db8;
   }
 }
 

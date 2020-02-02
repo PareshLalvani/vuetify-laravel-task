@@ -2,8 +2,8 @@
     File Name: _themeSemiDark.scss
     Description: partial- Styles for semi dark theme
     ----------------------------------------------------------------------------------------
+      
         
-         
       
 ==========================================================================================*/
 
@@ -17,7 +17,7 @@
         }
         .shadow-bottom{
             width: 94%;
-            background: linear-gradient(to bottom, rgb(15, 22, 66) 44%, rgba(15, 22, 66, 0.51) 73%, rgba(44, 48, 60, 0) 100%)
+            // background: linear-gradient(to bottom, rgb(15, 22, 66) 44%, rgba(15, 22, 66, 0.51) 73%, rgba(44, 48, 60, 0) 100%)
         }
         .scroll-area-v-nav-menu{
             .feather-icon, span{

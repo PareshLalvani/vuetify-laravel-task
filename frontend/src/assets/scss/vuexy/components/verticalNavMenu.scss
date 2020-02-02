@@ -2,8 +2,8 @@
   File Name: verticalNavMenu.scss
   Description: Styles for v-nav-menu component. Imported in VerticalNavMenu.vue file
   ----------------------------------------------------------------------------------------
-      
-     
+    
+    
     
 ==========================================================================================*/
 
@@ -179,14 +179,19 @@
 
 
     .router-link-active{
-      background: linear-gradient(118deg, rgba(var(--vs-primary),1), rgba(var(--vs-primary),.7));
-      box-shadow: 0px 0px 10px 1px rgba(var(--vs-primary),.7);
-      // font-weight: 400;
+      background: #ffffff; 
+      box-shadow: none;
+      color: #000;
+      font-weight: 600;
       .feather-icon{
-        color: $white;
+      font-weight: 600;
+      color: $black !important;
+        svg{
+        color: $black !important;
+        }
       }
       span{
-        color: $white;
+        color: $black !important;
       }
     }
   }

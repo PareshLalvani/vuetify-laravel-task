@@ -32,9 +32,152 @@
           </vs-dropdown>
         </div>
 
+        <div class="bookmark-container">
+          <feather-icon icon="StarIcon" svgClasses="stoke-current text-warning" class="cursor-pointer p-2" @click.stop="showBookmarkPagesDropdown = !showBookmarkPagesDropdown" />
+                    <div v-click-outside="outside" class="absolute bookmark-list w-1/3 xl:w-1/4 mt-4" v-if="showBookmarkPagesDropdown">
+          <vx-auto-suggest :autoFocus="true" :data="navbarSearchAndPinList" @selected="selected" @actionClicked="actionClicked" inputClassses="w-full" show-action show-pinned background-overlay></vx-auto-suggest>
+          </div>
+        </div>
       </template>
 
-   
+
+      <router-link tag="div" to="/" class="vx-logo cursor-pointer mx-auto flex items-center">
+        <img :src="logo" alt="logo" class="w-10 mr-4" v-if="logo">
+        <span class="vx-logo-text">Famzy</span>
+      </router-link>
+
+      <!-- SEARCHBAR -->
+      <div class="search-full-container w-full h-full absolute left-0" :class="{'flex': showFullSearch}" v-show="showFullSearch">
+          <vx-auto-suggest
+            class="w-full"
+            inputClassses="w-full vs-input-no-border vs-input-no-shdow-focus"
+            :autoFocus="showFullSearch"
+            :data="navbarSearchAndPinList"
+            icon="SearchIcon"
+            placeholder="Search..."
+            ref="navbarSearch"
+            @closeSearchbar="showFullSearch = false"
+            @selected="selected"
+            background-overlay />
+          <div class="absolute right-0 h-full z-50">
+              <feather-icon icon="XIcon" class="px-4 cursor-pointer h-full close-search-icon" @click="showFullSearch = false"></feather-icon>
+          </div>
+      </div>
+      <feather-icon icon="SearchIcon" @click="showFullSearch = true" class="cursor-pointer navbar-fuzzy-search mr-4"></feather-icon>
+
+      <!-- NOTIFICATIONS -->
+      <vs-dropdown vs-custom-content vs-trigger-click class="cursor-pointer">
+        <feather-icon icon="BellIcon" class="cursor-pointer mt-1 sm:mr-6 mr-2" :badge="unreadNotifications.length"></feather-icon>
+        <vs-dropdown-menu class="notification-dropdown dropdown-custom vx-navbar-dropdown">
+
+          <div class="notification-top text-center p-5 bg-primary text-white">
+            <h3 class="text-white">{{ unreadNotifications.length }} New</h3>
+            <p class="opacity-75">App Notifications</p>
+          </div>
+
+          <VuePerfectScrollbar ref="mainSidebarPs" class="scroll-area--nofications-dropdown p-0 mb-10" :settings="settings">
+          <ul class="bordered-items">
+            <li v-for="ntf in unreadNotifications" :key="ntf.index" class="flex justify-between px-4 py-4 notification cursor-pointer">
+              <div class="flex items-start">
+                <feather-icon :icon="ntf.icon" :svgClasses="[`text-${ntf.category}`, 'stroke-current mr-1 h-6 w-6']"></feather-icon>
+                <div class="mx-2">
+                  <span class="font-medium block notification-title" :class="[`text-${ntf.category}`]">{{ ntf.title }}</span>
+                  <small>{{ ntf.msg }}</small>
+                </div>
+              </div>
+              <small class="mt-1 whitespace-no-wrap">{{ elapsedTime(ntf.time) }}</small>
+            </li>
+          </ul>
+          </VuePerfectScrollbar>
+                    <div class="
+                        checkout-footer
+                        fixed
+                        bottom-0
+                        rounded-b-lg
+                        text-primary
+                        w-full
+                        p-2
+                        font-semibold
+                        text-center
+                        border
+                        border-b-0
+                        border-l-0
+                        border-r-0
+                        border-solid
+                        d-theme-border-grey-light
+                        cursor-pointer">
+                        <span>View All Notifications</span>
+                    </div>
+        </vs-dropdown-menu>
+      </vs-dropdown>
+
+      <!-- USER META -->
+      <div class="the-navbar__user-meta flex items-center" v-if="activeUserInfo.displayName">
+        <div class="text-right leading-tight hidden sm:block">
+          <p class="font-semibold">{{ user_displayName }}</p>
+          <small>Available</small>
+        </div>
+        <vs-dropdown vs-custom-content vs-trigger-click class="cursor-pointer">
+          <div class="con-img ml-3">
+            <img
+              v-if="activeUserImg"
+              key="onlineImg"
+              :src="activeUserImg"
+              alt="user-img"
+              width="40"
+              height="40"
+              class="rounded-full shadow-md cursor-pointer block" />
+          </div>
+          <vs-dropdown-menu class="vx-navbar-dropdown">
+            <ul style="min-width: 9rem">
+              <li
+                class="flex py-2 px-4 cursor-pointer hover:bg-primary hover:text-white"
+                @click="$router.push('/pages/profile').catch(() => {})">
+
+                <feather-icon icon="UserIcon" svgClasses="w-4 h-4" />
+                <span class="ml-2">Profile</span>
+              </li>
+              <li
+                class="flex py-2 px-4 cursor-pointer hover:bg-primary hover:text-white"
+                @click="$router.push('/apps/email').catch(() => {})">
+
+                <feather-icon icon="MailIcon" svgClasses="w-4 h-4" />
+                <span class="ml-2">Inbox</span>
+              </li>
+              <li
+                class="flex py-2 px-4 cursor-pointer hover:bg-primary hover:text-white"
+                @click="$router.push('/apps/todo').catch(() => {})">
+
+                <feather-icon icon="CheckSquareIcon" svgClasses="w-4 h-4" />
+                <span class="ml-2">Tasks</span>
+              </li>
+              <li
+                class="flex py-2 px-4 cursor-pointer hover:bg-primary hover:text-white"
+                @click="$router.push('/apps/chat').catch(() => {})">
+
+                <feather-icon icon="MessageSquareIcon" svgClasses="w-4 h-4" />
+                <span class="ml-2">Chat</span>
+              </li>
+              <li
+                class="flex py-2 px-4 cursor-pointer hover:bg-primary hover:text-white"
+                @click="$router.push('/apps/eCommerce/wish-list').catch(() => {})">
+
+                <feather-icon icon="HeartIcon" svgClasses="w-4 h-4" />
+                <span class="ml-2">Wish List</span>
+              </li>
+
+              <vs-divider class="m-1"></vs-divider>
+
+              <li
+                class="flex py-2 px-4 cursor-pointer hover:bg-primary hover:text-white"
+                @click="logOutConfirm">
+                <feather-icon icon="LogOutIcon" svgClasses="w-4 h-4"/>
+                <span class="ml-2">Logout</span>
+              </li>
+            </ul>
+          </vs-dropdown-menu>
+        </vs-dropdown>
+      </div>
 
     </vs-navbar>
   </div>
@@ -42,7 +185,9 @@
 </template>
 
 <script>
-
+import VxAutoSuggest from '@/components/vx-auto-suggest/VxAutoSuggest.vue';
+import VuePerfectScrollbar from 'vue-perfect-scrollbar'
+import draggable from 'vuedraggable'
 
 export default {
     name: "the-navbar",
@@ -55,6 +200,7 @@ export default {
     },
     data() {
         return {
+            navbarSearchAndPinList: this.$store.state.navbarSearchAndPinList,
             searchQuery: '',
             showFullSearch: false,
             unreadNotifications: [
@@ -87,7 +233,7 @@ export default {
           }
         }
 
-        this.isThemedark === "dark" ? color === "#fff" ? color = "#10163a" : color = "#f58a8a9e" : null
+        this.isThemedark === "dark" ? color === "#fff" ? color = "#10163a" : color = "#262c49" : null
 
         return color
       },
@@ -122,9 +268,53 @@ export default {
             return this.$store.state.windowWidth
         },
 
-    
+        // BOOKMARK & SEARCH
+        data() {
+            return this.$store.state.navbarSearchAndPinList;
+        },
+        starredPages() {
+            return this.$store.state.starredPages;
+        },
+        starredPagesLimited: {
+            get() {
+                return this.starredPages.slice(0, 10);
+            },
+            set(list) {
+                this.$store.dispatch('arrangeStarredPagesLimited', list);
+            }
+        },
+        starredPagesMore: {
+            get() {
+                return this.starredPages.slice(10);
+            },
+            set(list) {
+                this.$store.dispatch('arrangeStarredPagesMore', list);
+            }
+        },
+
+        // PROFILE
+        activeUserInfo() {
+          return this.$store.state.AppActiveUser
+        },
+        user_displayName() {
+            return this.activeUserInfo.displayName
+        },
+        activeUserImg() {
+            return this.$store.state.AppActiveUser.photoURL;
+        }
     },
     methods: {
+      logOutConfirm() {
+          this.$vs.dialog({
+            type: "confirm",
+            color: "rgba(var(--vs-primary),1)",
+            title: `Confirmation`,
+            acceptText: "Yes",
+            cancelText: "No",
+            text: this.$t('strings.logout_confirm'),
+            accept: this.logout
+          });
+        },
         selected(item) {
             this.$router.push(item.url).catch(() => {})
             this.showFullSearch = false;
@@ -173,10 +363,6 @@ export default {
 
             return 'Just Now'
         },
-        logout() {
-            // This is just for demo Purpose. If user clicks on logout -> redirect
-            this.$router.push('/pages/login').catch(() => {})
-        },
         outside: function() {
             this.showBookmarkPagesDropdown = false
         },
@@ -212,6 +398,10 @@ export default {
             }
         }
     },
-  
+    components: {
+        VxAutoSuggest,
+        VuePerfectScrollbar,
+        draggable
+    },
 }
 </script>

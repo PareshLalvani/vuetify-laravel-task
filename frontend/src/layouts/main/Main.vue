@@ -1,3 +1,12 @@
+<!-- =========================================================================================
+    File Name: Main.vue
+    Description: Main layout
+    ----------------------------------------------------------------------------------------
+      
+      
+      
+========================================================================================== -->
+
 
 <template>
   <div
@@ -21,7 +30,7 @@
     <v-nav-menu
       :navMenuItems="navMenuItems"
       :logo="navMenuLogo"
-      :title="$t('labels.project_name')"
+      :title="$t('labels.heading')"
       parent=".layout--main"
     />
 
@@ -154,20 +163,36 @@
 <script>
 import BackToTop from "vue-backtotop";
 import HNavMenu from "@/layouts/components/horizontal-nav-menu/HorizontalNavMenu.vue";
+//import navMenuItems        from "@/layouts/components/vertical-nav-menu/navMenuItems.js"
+import TheCustomizer from "@/layouts/components/customizer/TheCustomizer.vue";
 import TheNavbarHorizontal from "@/layouts/components/navbar/TheNavbarHorizontal.vue";
 import TheNavbarVertical from "@/layouts/components/navbar/TheNavbarVertical.vue";
 import TheFooter from "@/layouts/components/TheFooter.vue";
 import themeConfig from "@/../themeConfig.js";
 import VNavMenu from "@/layouts/components/vertical-nav-menu/VerticalNavMenu.vue";
+import AddEditUser from "@/layouts/components/users/addedit-user.vue";
+import Client from "@/layouts/components/users/client.vue";
+import Admin from "@/layouts/components/users/admin.vue";
+import Consultant from "@/layouts/components/users/consultant.vue";
+import AddEditRole from "@/layouts/components/role-management/addedit-role.vue";
+import AddEditLead from "@/layouts/components/leads/addedit-lead.vue";
+
 
 export default {
   components: {
     BackToTop,
     HNavMenu,
+    TheCustomizer,
     TheFooter,
     TheNavbarHorizontal,
     TheNavbarVertical,
-    VNavMenu
+    VNavMenu,
+    AddEditUser,
+    Client,
+    Admin,
+    Consultant,
+    AddEditLead,
+    AddEditRole,
   },
   data() {
     return {
@@ -179,7 +204,6 @@ export default {
       navbarColor: themeConfig.navbarColor || "#fff",
       navbarType: themeConfig.navbarType || "floating",
       navMenuItems: [],
-      navMenuLogo: require("@/assets/images/logo/logo2.png"),
       routerTransition: themeConfig.routerTransition || "none",
       routeTitle: this.$route.meta.pageTitle
     };
@@ -285,17 +309,17 @@ export default {
       this.hideScrollToTop = val;
     },
     setMenuItems() {
-      let role = this.$store.state.userInfo.role;
-      // console.log(role);
-      let menus = [
-        {
+      this.getMenus();
+    },
+    async getMenus() {
+      let menus  = [
+         {
           url: "/dashboard",
           name: "Dashboard",
-          slug: "Dashboard",
-          icon: "HomeIcon"
+          icon: "HomeIcon",
+          slug: "Home",
         },
       ];
-      // console.log(menus)
       this.navMenuItems = menus;
     }
   },

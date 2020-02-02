@@ -64,5 +64,136 @@
   * @import "utilities/background-patterns";
   * @import "utilities/skew-transforms";
   */
- 
- 
+
+  /* Login page style start*/
+body{
+  font-family: 'Open Sans', sans-serif !important;
+  /* font-family: "Open Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif; */
+}
+h1, h2, h3, h4, h5, h6, p, span {
+  font-family: 'Open Sans', sans-serif !important;
+}
+*{
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+
+  #page-login h1 {
+    font-size: 50px;
+    color: #fff;
+    font-weight: 600;
+  }
+  .login-card label.vs-input--label, .forgotpass-card label.vs-input--label, .changepass-card label.vs-input--label, .resetpass-card label.vs-input--label {
+    padding-left: 5px;
+    font-size: 13px;
+    color: rgb(0, 0, 0);
+}
+#page-login .vs-input-primary .vs-input--input:focus, .addedit-role .vs-input-primary .vs-input--input:focus{
+    border: 1px solid rgba(var(--vs-primary),1)!important;
+  }
+  #page-login .vs-input-primary.isFocus .vs-input--label, .vs-input-primary .vs-input--input:focus~.icon-inputx, .vs-input-primary .vs-input--input:focus~.vs-placeholder-label{
+      color: rgba(var(--vs-primary),1);
+  }
+  .forgot-pass a {
+    color: #000000;
+    font-weight: 500;
+    font-size: 12px;
+  }
+  .forgot-pass a:hover {
+    text-decoration: underline;
+  } 
+  #page-login h2{
+    color: rgba(var(--vs-primary),1);
+  }
+
+  /* Login page style end */
+  /* Logout Style start */
+  .vs-dialog .vs-button:last-child{
+    color: #fff !important;
+    background: rgba(var(--vs-warning),1) !important;
+  }
+  .vs-dialog .vs-button:last-child:hover{
+    box-shadow: 0 9px 28px -9px rgba(var(--vs-warning),1) !important;
+  }
+  .vs-dialog .vs-dialog-text{
+    font-size: 20px !important;
+    color: #000;
+    text-align: center;
+  }
+  /* Logout Style end */
+
+/* loading for button */
+  .con-vs-loading {
+    position: absolute;
+    background: rgba(var(--vs-primary),1) !important;
+    
+  }
+  .vx-logo .vx-logo-text, .v-nav-menu .header-sidebar .feather-icon svg{
+    color: #fff !important;
+  }
+
+
+.v-nav-menu .vs-sidebar--item .router-link-active span, .v-nav-menu .vs-sidebar--item .router-link-active .feather-icon{
+  color: #000 !important;
+}
+
+
+/* Sidebar style end */
+/* Users listing style start */
+.vs-tabs-primary .line-vs-tabs {
+  background: linear-gradient(30deg,rgba(var(--vs-primary),1),rgba(var(--vs-primary),.5))!important;
+  -webkit-box-shadow: 0 0 8px 0 rgba(var(--vs-primary),.4)!important;
+  box-shadow: 0 0 8px 0 rgba(var(--vs-primary),.4)!important;
+}
+.btn-add.vs-button-filled{
+  top: -40px;
+}
+.vs-textarea-primary.focusx{
+  border: 1px solid rgba(var(--vs-primary),1)!important;
+  box-shadow: 0 3px 10px 0 rgba(0,0,0,.15); 
+}
+.vs-input--placeholder.normal{
+ color: rgba(0, 0, 0, 0.492);
+}
+.vx-card__title h4{
+  color: rgba(var(--vs-primary),1) !important;
+  font-weight: 600;
+}
+.vs-checkbox{
+  width: 17px;
+  height: 17px;
+  border-radius: 5px;
+
+}
+.vs-table--thead tr{
+  background-color: #eeeeee;  
+}
+.back-btn.vs-button{
+  background: rgba(var(--vs-warning),1) !important;
+}
+.back-btn.vs-button:hover{
+  box-shadow: 0 9px 28px -9px rgba(var(--vs-warning),1) !important;
+}
+.vs-popup--background {
+  pointer-events: none;
+}
+.vs-radio--label{
+  font-size: 13px;
+}
+.vs-table--tbody-table .tr-values:not(.activeEdit):not(.tr-expandedx):not(.hoverFlat):hover{
+  transform: none !important;
+}
+.vs-con-table .vs-con-tbody .vs-table--tbody-table .tr-values .vs-table--td{
+  padding: 5px 15px !important;
+}
+.vs-table--tbody-table tr{
+  border-bottom: 2px solid #f6f6f6;
+}
+.client-table .vs-table--tbody-table .tr-values td{
+  padding: 10px !important;
+}
+
+.theme-semi-dark .v-nav-menu .scroll-area-v-nav-menu .vs-sidebar-group.vs-sidebar-group-open > .group-header {
+  background: rgba(var(--vs-primary),1) !important;
+}
