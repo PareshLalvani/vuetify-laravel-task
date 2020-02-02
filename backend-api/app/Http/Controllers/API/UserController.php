@@ -4,7 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Traits\Functions;
-use App\User;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -180,8 +180,9 @@ class UserController extends Controller
             $perPage = $request->perPage;
             $users = $users->skip($perPage*($page-1))->take($perPage);
         }
-        $users = $users->get();
-        return $this->jsonData('User list',$users);
+        $users = $users->latest()->get();
+        $data = ['users' => $users, 'count' =>$count];
+        return $this->jsonData('User list',$data);
     }
 
 }

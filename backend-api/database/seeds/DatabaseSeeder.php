@@ -19,6 +19,8 @@ class DatabaseSeeder extends Seeder
 	            'name' => $faker->name,
 	            'email' => $faker->email,
 	            'password' => bcrypt('secret'),
+                'phone' => $faker->phoneNumber,
+                'company' => $faker->company,
 	        ]);
 		}
     }

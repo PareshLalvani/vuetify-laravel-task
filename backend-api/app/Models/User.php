@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use App\Http\Controllers\Traits\Uuid;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -27,7 +27,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token','email_token'
+        'password', 'remember_token'
     ];
 
     /**
